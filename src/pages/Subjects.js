@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Outlet } from "react-router-dom";
 import { ThemeContext } from "../App";
 import Categories from "../components/Categories";
 
@@ -14,50 +15,7 @@ const Subjects = () => {
         </div>
       </div>
       <div>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
-        <h1>dada</h1>
+        <Outlet/>
       </div>
     </div>
   );
