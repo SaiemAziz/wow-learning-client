@@ -19,6 +19,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Subjects/>,
+                loader: ()=> fetch('https://wow-learning-server-saiemaziz.vercel.app/courses'),
                 children: [
                     {
                         index: true,
@@ -31,10 +32,10 @@ export const routes = createBrowserRouter([
                         element: <Category/>
                     },
                     {
-                        path: '/courses/:category',
-                        loader: ({params})=> fetch(`https://wow-learning-server-saiemaziz.vercel.app/courses/${params.category}`),
+                        path: '/courses/subject/:id',
+                        loader: ({params})=> fetch(`https://wow-learning-server-saiemaziz.vercel.app/courses/subject/${params.id}`),
                         element: <Category/>
-                    }
+                    },
                 ]
             }
         ]

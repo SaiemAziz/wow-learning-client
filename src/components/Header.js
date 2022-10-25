@@ -6,8 +6,8 @@ import { ThemeContext } from "../App";
 
 const Header = () => {
   let { user } = useContext(AuthContext);
-  let {thm, setThm} = useContext(ThemeContext);
-  
+  let { thm, setThm } = useContext(ThemeContext);
+
   return (
     <div className="navbar bg-base-300 shadow-xl sticky top-0 px-4 z-50 font-bold">
       <div className="navbar-start">

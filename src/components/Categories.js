@@ -1,17 +1,18 @@
 import React,{useContext} from 'react';
-import {BiChevronRight} from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../App';
+import AccordionList from './AccordionList';
 
-const Categories = () => {
+const Categories = ({subjects}) => {
 
     let {thm} = useContext(ThemeContext)
+    
 
     return (
-        <div className='flex flex-col mt-5'>
-            <Link className='text-2xl mt-2 hover:underline w-fit mx-auto' to='/courses/all'>All Subjects <BiChevronRight className='inline'/></Link>
-            <Link className='text-2xl mt-2 hover:underline w-fit mx-auto' to='/courses/science'>Science Subjects <BiChevronRight className='inline'/></Link>
-            <Link className='text-2xl mt-2 hover:underline w-fit mx-auto' to='/courses/general'>General Subjects <BiChevronRight className='inline'/></Link>
+        <div className='flex flex-col mt-5 text-left'>
+            <AccordionList subjects={subjects} cat={'All'}/>
+            <AccordionList subjects={subjects} cat={'Science'}/>
+            <AccordionList subjects={subjects} cat={'General'}/>
         </div>
     );
 };
