@@ -8,18 +8,23 @@ const Category = () => {
     let cat = useLocation();
     cat = (cat.pathname.replace('/courses/', ''))
     cat = cat.charAt(0).toUpperCase() + cat.slice(1)
+    if(cat === '/courses')
+        cat = 'All'
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5 p-5'>
+        <div>
+
             <p className='mt-5 text-5xl font-bold italic'>Category: {cat}</p>
             <p className='mb-5 text-5xl font-bold italic'>Total: {subjects.length}</p>
-            {
-                subjects.map(sub=>{
-                    return <div className='card glass p-5 shadow-xl'>
-                        <img src={sub.pic} alt="" />
-                        <p className='text-3xl'>Name: {sub.name}</p>
-                    </div>
-                })
-            }
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5 p-5 w-full'>
+                {
+                    subjects.map(sub=>{
+                        return <div className='card glass p-5 shadow-xl'>
+                            <img src={sub.pic} alt="" />
+                            <p className='text-3xl'>Name: {sub.name}</p>
+                        </div>
+                    })
+                }
+            </div>
         </div>
     );
 }; 

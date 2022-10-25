@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 export const ThemeContext = createContext('')
 
 function App() {
-  let [thm, setThm] = useState(true);
+  let [thm, setThm] = useState(false);
   
 
   return (
