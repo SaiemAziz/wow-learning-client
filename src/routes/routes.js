@@ -5,6 +5,7 @@ import ErrorPage from "../components/ErrorPage";
 import Home from "../pages/Home";
 import Subjects from "../pages/Subjects";
 import Category from "../components/Category";
+import SingleSubject from "../components/SingleSubject";
 
 export const routes = createBrowserRouter([
     {
@@ -34,7 +35,7 @@ export const routes = createBrowserRouter([
                     {
                         path: '/courses/subject/:id',
                         loader: ({params})=> fetch(`https://wow-learning-server-saiemaziz.vercel.app/courses/subject/${params.id}`),
-                        element: <Category/>
+                        element: <SingleSubject/>
                     },
                 ]
             }

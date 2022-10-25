@@ -9,7 +9,7 @@ const Categories = ({subjects}) => {
     
 
     return (
-        <div className='flex flex-col mt-5 text-left'>
+        <div className='flex flex-col mt-5 text-left lg:min-h-[600px]'>
             <AccordionList subjects={subjects} cat={'All'}/>
             <AccordionList subjects={subjects} cat={'Science'}/>
             <AccordionList subjects={subjects} cat={'General'}/>
