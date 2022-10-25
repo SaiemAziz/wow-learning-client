@@ -12,10 +12,10 @@ const SingleSubject = () => {
             <p className='text-2xl my-5 text-left'>Category: {subject.category.toUpperCase()}</p>
             <p className='text-2xl mt-5 text-left'>Description:</p>
             <p className='text-justify mb-10'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, nihil commodi? Asperiores molestiae quod ab eius! Soluta nulla architecto tempore iste obcaecati, ea neque! Sit nemo vel repellat beatae recusandae doloremque ipsa autem sequi eveniet quaerat esse, sapiente earum dicta consequatur numquam, unde ipsum et ad. Ab nesciunt error cumque.
+                {subject.description}
             </p>
 
-            <Link to='/checkout' className='btn btn-info  text-xl font-bold'>Premium Access</Link>
+            <Link to={`/checkout/${subject._id}`} className='btn btn-info  text-xl font-bold'>Premium Access</Link>
         </div>
     );
 };

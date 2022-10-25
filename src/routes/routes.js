@@ -30,7 +30,8 @@ export const routes = createBrowserRouter([
                 element: <Register/>
             },
             {
-                path: '/checkout',
+                path: '/checkout/:id',
+                loader: ({params})=>fetch(`https://wow-learning-server-saiemaziz.vercel.app/courses/subject/${params.id}`),
                 element: <Private><Checkout/></Private>
             },
             {
