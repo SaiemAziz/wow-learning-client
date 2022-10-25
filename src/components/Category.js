@@ -7,8 +7,9 @@ const Category = () => {
     return (
         <div>
 
-            <p className='mt-5 text-5xl font-bold italic'>All Subjects</p>
-            <p className='mb-5 text-5xl font-bold italic'>Total: <span className='text-success'>{subjects.length}</span></p>
+            <p className='mt-10 text-5xl font-bold italic'>All Subjects</p>
+            <br />
+            <p className='mb-10 text-5xl font-bold italic'>Total: <span className='text-success'>{subjects.length}</span></p>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5 p-5 w-full '>
                 {
                     subjects.map(sub=>{

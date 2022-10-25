@@ -30,9 +30,9 @@ const Header = () => {
       <div className="navbar-start">
         <NavLink
           to="/"
-          className="cursor-pointer normal-case font-extrabold  text-3xl italic bg-clip-text bg-gradient-to-r from-sky-600 to-violet-400"
+          className="cursor-pointer flex flex-col sm:flex-row items-center normal-case font-extrabold  text-3xl italic bg-clip-text bg-gradient-to-r from-green-600 to-violet-600"
         >
-          <span className="bg-gradient-to-r from-sky-600 to-violet-400 p-2 rounded-xl not-italic text-base-300">WOW</span>
+          <span className="bg-gradient-to-r from-green-600 to-violet-600 p-3 rounded-xl not-italic text-base-300 mx-2">WOW</span>
           <span className="text-transparent"> LEARNING</span>
         </NavLink>
       </div>
@@ -40,6 +40,9 @@ const Header = () => {
         <ul className="menu menu-horizontal p-0">
           <NavLink className="my-auto mx-5" to="/courses">
             Subjects
+          </NavLink>
+          <NavLink className="my-auto mx-5" to="/blog">
+            Blog
           </NavLink>
 
           <button
@@ -65,11 +68,15 @@ const Header = () => {
             Log In
           </Link>
            : 
-          <div className="flex">
+          <div className="flex items-center">
             {
               user?.photoURL ? 
-              <img className="w-[30px] rounded-full" src={user.photoURL} alt="" /> :
-              <CgProfile/>
+              <div className="tooltip tooltip-info tooltip-bottom" data-tip={user.displayName}>
+                <img className="w-[40px] h-[40px] rounded-full mx-5" src={user.photoURL} alt="" /> 
+              </div> :
+              <div className="tooltip tooltip-info tooltip-bottom" data-tip={user.displayName}>
+                <CgProfile/>
+              </div>
             }
             <Link to="/" onClick={clickedLogout} className="btn btn-error">
             Log Out
@@ -98,15 +105,15 @@ const Header = () => {
         </label>
         <ul
           tabIndex={0}
-          className="menu menu-compact dropdown-content mt-6 p-2 shadow bg-base-300 rounded-box w-52 z-50"
+          className="menu menu-compact dropdown-content mt-6 p-0 shadow bg-base-300 rounded-box w-52 z-50 text-left"
         >
-          <li>
-            <NavLink to='/courses'>Subjects</NavLink>
-          </li>
+            <NavLink className='p-3' to='/courses'>Subjects</NavLink>
+            <Link className='p-3' to='/courses'>Blog</Link>
+          
           <li
             onClick={() => setThm(!thm)}
             data-theme={!thm ? "coffee" : "autumn"}
-            className=""
+            className="m-3 mt-0"
           >
             {thm ? (
               <Link>

@@ -9,6 +9,7 @@ import SingleSubject from "../components/SingleSubject";
 import Login from "../pages/Login";
 import Private from "../context/Private";
 import Checkout from "../pages/Checkout";
+import Register from "../pages/Register";
 
 export const routes = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login/>
+            },
+            {
+                path: '/register',
+                element: <Register/>
             },
             {
                 path: '/checkout',

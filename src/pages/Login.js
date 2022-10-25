@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../App';
 import { AuthContext } from '../context/Auth';
 import { toast } from 'react-toastify';
-import { BsGoogle } from 'react-icons/bs';
+import { BsGithub, BsGoogle } from 'react-icons/bs';
 
 const Login = () => {
     let {thm} = useContext(ThemeContext)
-    let {resetPassword, logIn, setUser, googleLogin} = useContext(AuthContext)
+    let {resetPassword, logIn, setUser, googleLogin, redirect} = useContext(AuthContext)
     let [show, setShow] = useState(false)
-    let [errors, setErrors] = useState(null)
+    let from = redirect || '/';
+    let navigate = useNavigate()
     
 
     // log in by email and password
@@ -21,6 +22,7 @@ const Login = () => {
             .then((res)=>{
                 setUser(res.user)
                 toast.success('Successfully Logged in')
+                navigate(redirect, {replace: true})
             })
             .catch((err)=>{
                 toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
@@ -34,6 +36,7 @@ const Login = () => {
         .then((res)=>{
             setUser(res.user)
             toast.success('Successfully logged in')
+            navigate(redirect, {replace: true})
         })
         .catch((err)=>{
             toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
@@ -55,8 +58,8 @@ const Login = () => {
     }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 my-5'>
-            <div className='flex justify-center items-center'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+            <div className='flex justify-center items-center my-10'>
                 <h1 className='text-7xl italic text-accent-focus font-medium'>Please Log In</h1>
             </div>
             <form className={`text-gray-300 text-left p-10 grid gap-5 grid-cols-1 sm:grid-cols-2 ${thm ? "bg-stone-800" : "bg-info-content"}`} onSubmit={clickedForm}>
@@ -80,8 +83,9 @@ const Login = () => {
                 <div className='sm:col-span-2 flex justify-between text-blue-500'>
                     <p onClick={clickedForgotPassword} className='link'>Forgot Password?</p> 
                 </div>
-                <div className='sm:col-span-2 flex justify-center text-blue-500'>
-                    <p onClick={clickedGoogle} className='link'><BsGoogle/></p> 
+                <div className='sm:col-span-2 flex justify-center text-3xl'>
+                    <p onClick={clickedGoogle} className='link mx-4'><BsGoogle/></p> 
+                    <p onClick={clickedGoogle} className='link mx-4'><BsGithub/></p> 
                 </div>
             </form>
         </div>
