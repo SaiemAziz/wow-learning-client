@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData} from 'react-router-dom';
+import { Link, useLoaderData} from 'react-router-dom';
 
 const Category = () => {
 
@@ -12,14 +12,14 @@ const Category = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5 p-5 w-full '>
                 {
                     subjects.map(sub=>{
-                        return <div className='card glass p-5 shadow-xl min-h-[500px]' key={sub._id}
+                        return <div className='card glass p-5 shadow-xl lg:min-h-[500px]' key={sub._id}
                         >
                             <img className='rounded-xl mb-3' src={sub.pic} alt="" />
                             <p className='text-xl italic'>Category: <span
                             className='text-accent font-medium'
                             >{sub.category}</span></p>
-                            <p className='text-3xl mt-3'>Name: <span className='text-info font-bold'>{sub.name}</span></p>
-                            <button className='btn btn-outline btn-success'>Details</button>
+                            <p className='text-3xl mt-3'><span className='text-info font-bold'>{sub.name}</span></p>
+                            <Link to={`/courses/subject/${sub._id}`} className='btn btn-outline btn-success mt-5'>Details</Link>
                         </div>
                     })
                 }
