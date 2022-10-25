@@ -14,15 +14,8 @@ const Auth = ({children}) => {
     // fetch user if logged in from server
     useEffect(() => {
         let subscribe = onAuthStateChanged(auth, currentUser=>{
-                if(currentUser === null || currentUser?.emailVerified)
-                {
-                    // console.log(currentUser);
                     setUser(currentUser);
-                }
-                else{
-                    setUser(null);
-                }
-                setLoading(false);
+                    setLoading(false);
         })
 
         return () => {
@@ -30,11 +23,11 @@ const Auth = ({children}) => {
         }
     },[])
 
-    // send verification
-    let sendVerification = () => {
-        setLoading(true);
-        return sendEmailVerification(auth.currentUser)
-    }
+    // // send verification
+    // let sendVerification = () => {
+    //     setLoading(true);
+    //     return sendEmailVerification(auth.currentUser)
+    // }
 
     // password reset
     let resetPassword = (email) => {
@@ -72,7 +65,6 @@ const Auth = ({children}) => {
 
     let authInfo = {
         createUser,
-        sendVerification, 
         loading,
         logIn, 
         logOut, 

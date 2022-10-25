@@ -11,13 +11,13 @@ const Header = () => {
   return (
     <div className="navbar bg-base-300 shadow-xl sticky top-0 px-4 py-4 z-50 font-bold">
       <div className="navbar-start">
-        <Link
+        <NavLink
           to="/"
           className="cursor-pointer normal-case font-extrabold  text-3xl italic bg-clip-text bg-gradient-to-r from-sky-600 to-violet-400"
         >
           <span className="bg-gradient-to-r from-sky-600 to-violet-400 p-2 rounded-xl not-italic text-base-300">WOW</span>
           <span className="text-transparent"> LEARNING</span>
-        </Link>
+        </NavLink>
       </div>
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal p-0">
@@ -77,7 +77,7 @@ const Header = () => {
           className="menu menu-compact dropdown-content mt-6 p-2 shadow bg-base-300 rounded-box w-52 z-50"
         >
           <li>
-            <Link>Item 1</Link>
+            <NavLink to='/courses'>Subjects</NavLink>
           </li>
           <li
             onClick={() => setThm(!thm)}

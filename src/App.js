@@ -12,12 +12,11 @@ function App() {
   return (
     <ThemeContext.Provider value={{ thm, setThm }}>
       <div className="App" data-theme={thm ? "coffee" : "autumn"}>
-        <div className="flex flex-col justify-between max-w-6xl mx-auto lg:min-h-screen">
-          <div className="">
+        <div className="flex flex-col justify-between max-w-6xl mx-auto md:min-h-screen">
+          
             <Header />
             <Outlet />
-          </div>
-          <Footer />
+            <Footer />
         </div>
       </div>
     </ThemeContext.Provider>

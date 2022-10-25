@@ -6,6 +6,9 @@ import Home from "../pages/Home";
 import Subjects from "../pages/Subjects";
 import Category from "../components/Category";
 import SingleSubject from "../components/SingleSubject";
+import Login from "../pages/Login";
+import Private from "../context/Private";
+import Checkout from "../pages/Checkout";
 
 export const routes = createBrowserRouter([
     {
@@ -16,6 +19,14 @@ export const routes = createBrowserRouter([
             {
                 index: true,
                 element: <Home/>
+            },
+            {
+                path: '/login',
+                element: <Login/>
+            },
+            {
+                path: '/checkout',
+                element: <Private><Checkout/></Private>
             },
             {
                 path: '/courses',
