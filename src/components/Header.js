@@ -71,7 +71,7 @@ const Header = () => {
           <div className="flex items-center">
             {
               user?.photoURL ? 
-              <div className="tooltip tooltip-info tooltip-bottom" data-tip={user.displayName}>
+              <div className="tooltip tooltip-info tooltip-bottom" data-tip={user.displayName || 'No Name'}>
                 <img className="w-[40px] h-[40px] rounded-full mx-5" src={user.photoURL} alt="" /> 
               </div> :
               <div className="tooltip tooltip-info tooltip-bottom" data-tip={user.displayName}>

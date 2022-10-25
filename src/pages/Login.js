@@ -7,7 +7,7 @@ import { BsGithub, BsGoogle } from 'react-icons/bs';
 
 const Login = () => {
     let {thm} = useContext(ThemeContext)
-    let {resetPassword, logIn, setUser, googleLogin, redirect} = useContext(AuthContext)
+    let {resetPassword, logIn, setUser, googleLogin, redirect, githubLogin} = useContext(AuthContext)
     let [show, setShow] = useState(false)
     let from = redirect || '/';
     let navigate = useNavigate()
@@ -41,6 +41,19 @@ const Login = () => {
         .catch((err)=>{
             toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
         })
+    }
+
+    // log in by google
+    let clickedGithub = () => {
+        githubLogin()
+            .then((res)=>{
+                setUser(res.user)
+                toast.success('Successfully logged in')
+                navigate(redirect, {replace: true})
+            })
+            .catch((err)=>{
+                toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+            })
     }
 
     //send password verification email
@@ -85,7 +98,7 @@ const Login = () => {
                 </div>
                 <div className='sm:col-span-2 flex justify-center text-3xl'>
                     <p onClick={clickedGoogle} className='link mx-4'><BsGoogle/></p> 
-                    <p onClick={clickedGoogle} className='link mx-4'><BsGithub/></p> 
+                    <p onClick={clickedGithub} className='link mx-4'><BsGithub/></p> 
                 </div>
             </form>
         </div>
