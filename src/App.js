@@ -3,6 +3,9 @@ import { useState, createContext, Provider } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const ThemeContext = createContext("");
 
@@ -18,6 +21,18 @@ function App() {
             <Outlet />
             <Footer />
         </div>
+            <ToastContainer  
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            />
       </div>
     </ThemeContext.Provider>
   );

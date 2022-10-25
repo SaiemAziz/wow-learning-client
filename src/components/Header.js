@@ -3,10 +3,27 @@ import { Link, NavLink } from "react-router-dom";
 import { BsSun, BsMoonFill } from "react-icons/bs";
 import { AuthContext } from "../context/Auth";
 import { ThemeContext } from "../App";
+import { toast } from 'react-toastify';
+import {CgProfile} from 'react-icons/cg'
+ 
+
 
 const Header = () => {
-  let { user } = useContext(AuthContext);
+  let { user, setUser, logOut } = useContext(AuthContext);
   let { thm, setThm } = useContext(ThemeContext);
+
+  // log out user
+  let clickedLogout = () => {
+      logOut()
+      .then(res => {
+        setUser(null)
+        toast.success('Successfully Logged out')
+      })
+      .catch(() => {
+        setUser(null)
+        toast.success('Successfully Logged out')
+      })
+  }
 
   return (
     <div className="navbar bg-base-300 shadow-xl sticky top-0 px-4 py-4 z-50 font-bold">
@@ -43,15 +60,22 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        {!user ? (
+        {!user ? 
           <Link to="/login" className="btn btn-outline btn-success">
             Log In
           </Link>
-        ) : (
-          <Link to="/" className="btn btn-error">
+           : 
+          <div className="flex">
+            {
+              user?.photoURL ? 
+              <img className="w-[30px] rounded-full" src={user.photoURL} alt="" /> :
+              <CgProfile/>
+            }
+            <Link to="/" onClick={clickedLogout} className="btn btn-error">
             Log Out
-          </Link>
-        )}
+            </Link>
+          </div>
+        }
       </div>
 
       {/* drop down menu */}

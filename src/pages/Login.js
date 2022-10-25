@@ -1,22 +1,61 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../App';
+import { AuthContext } from '../context/Auth';
+import { toast } from 'react-toastify';
+import { BsGoogle } from 'react-icons/bs';
 
 const Login = () => {
     let {thm} = useContext(ThemeContext)
+    let {resetPassword, logIn, setUser, googleLogin} = useContext(AuthContext)
     let [show, setShow] = useState(false)
+    let [errors, setErrors] = useState(null)
     
+
+    // log in by email and password
     let clickedForm = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        let userEmail = e.target.email.value
+        let userPassword = e.target.password.value
+        logIn(userEmail, userPassword)
+            .then((res)=>{
+                setUser(res.user)
+                toast.success('Successfully Logged in')
+            })
+            .catch((err)=>{
+                toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+            })
+        e.target.reset()
     }
+
+    // log in by google
+    let clickedGoogle = () => {
+        googleLogin()
+        .then((res)=>{
+            setUser(res.user)
+            toast.success('Successfully logged in')
+        })
+        .catch((err)=>{
+            toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+        })
+    }
+
+    //send password verification email
     let clickedForgotPassword = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        let userEmail = e.nativeEvent.path[2].email;
+        resetPassword(userEmail.value)
+        .then(()=>{
+            toast.success('SENT A RESET PASSWORD EMAIL')
+        })
+        .catch((err)=>{
+            toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+        })
+        userEmail.value ='';
     }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 '>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 my-5'>
             <div className='flex justify-center items-center'>
                 <h1 className='text-7xl italic text-accent-focus font-medium'>Please Log In</h1>
             </div>
@@ -30,16 +69,19 @@ const Login = () => {
                 className='input input-bordered input-primary text-primary' required />
                 
 
-                <div className='col-span-2 flex justify-end'>
+                <div className='sm:col-span-2 flex justify-end'>
                 <h1 className='text-warning'>Show Password <><input type="checkbox" onClick={()=>setShow(!show)} className="checkbox-sm checkbox outline ml-5" /></></h1>
                 </div>
 
-                <div className='col-span-2 flex justify-between'>
+                <div className='sm:col-span-2 flex justify-between'>
                     <button type='submit' className='btn btn-success'>Log In</button>
                     <Link to='/register' className='btn btn-outline btn-info'>No Account?</Link>
                 </div>
-                <div className='col-span-2 flex justify-between text-blue-500'>
+                <div className='sm:col-span-2 flex justify-between text-blue-500'>
                     <p onClick={clickedForgotPassword} className='link'>Forgot Password?</p> 
+                </div>
+                <div className='sm:col-span-2 flex justify-center text-blue-500'>
+                    <p onClick={clickedGoogle} className='link'><BsGoogle/></p> 
                 </div>
             </form>
         </div>
