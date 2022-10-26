@@ -38,26 +38,32 @@ const Header = () => {
       </div>
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal p-0">
-          <NavLink className="my-auto mx-5" to="/courses">
+          <NavLink className={({ isActive }) =>
+              isActive ? 'my-auto mx-5 text-success' : 'my-auto mx-5'
+            } to="/courses">
             Subjects
           </NavLink>
-          <NavLink className="my-auto mx-5" to="/blog">
+          <NavLink className={({ isActive }) =>
+              isActive ? 'my-auto mx-5 text-success' : 'my-auto mx-5'
+            } to="/blog">
             Blog
           </NavLink>
 
           <button
-            onClick={() => setThm(!thm)}
+            
             data-theme={!thm ? "coffee" : "autumn"}
-            className="rounded-full p-4"
+            className="rounded-xl mx-5 p-4"
           >
             {thm ? (
-              <>
+              <div className="flex items-center">
                 <BsSun />
-              </>
+                <input type="checkbox" className="toggle toggle-sm ml-2 toggle-primary" onClick={() => setThm(!thm)} data-theme='coffee'/>
+              </div>
             ) : (
-              <>
+              <div className="flex items-center">
                 <BsMoonFill />
-              </>
+                <input type="checkbox" className="ml-2 toggle toggle-sm toggle-primary" onClick={() => setThm(!thm)} data-theme='autumn'/>
+              </div>
             )}
           </button>
         </ul>
@@ -78,7 +84,7 @@ const Header = () => {
                 <CgProfile/>
               </div>
             }
-            <Link to="/" onClick={clickedLogout} className="btn btn-error">
+            <Link to="/login" onClick={clickedLogout} className="btn btn-error">
             Log Out
             </Link>
           </div>
@@ -107,24 +113,29 @@ const Header = () => {
           tabIndex={0}
           className="menu menu-compact dropdown-content mt-6 p-0 shadow bg-base-300 rounded-box w-52 z-50 text-left"
         >
-            <NavLink className='p-3' to='/courses'>Subjects</NavLink>
-            <Link className='p-3' to='/courses'>Blog</Link>
+            <NavLink className={({ isActive }) =>
+              isActive ? 'my-2 mx-5 text-success' : 'my-2 mx-5'
+            } to='/courses'>Subjects</NavLink>
+            <NavLink className={({ isActive }) =>
+              isActive ? 'mb-2 mx-5 text-success' : 'mb-2 mx-5'
+            } to='/blog'>Blog</NavLink>
           
-          <li
-            onClick={() => setThm(!thm)}
+          <p
             data-theme={!thm ? "coffee" : "autumn"}
-            className="m-3 mt-0"
+            className="m-3 mt-0 p-4 rounded-b-xl"
           >
             {thm ? (
-              <Link>
+              <div className="flex justify-between items-center">
                 <BsSun />
-              </Link>
+                <input type="checkbox" className="toggle toggle-md toggle-primary" onClick={() => setThm(!thm)} data-theme='coffee'/>
+              </div>
             ) : (
-              <Link>
+              <div className="flex justify-between items-center">
                 <BsMoonFill />
-              </Link>
+                <input type="checkbox" className="toggle toggle-md toggle-primary" onClick={() => setThm(!thm)} data-theme='autumn'/>
+              </div>
             )}
-          </li>
+          </p>
         </ul>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {AiFillFacebook, AiFillLinkedin} from 'react-icons/ai'
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-base-300 text-base-content rounded">
+    <footer className="footer footer-center p-10 bg-base-300 text-base-content rounded z-50">
       <div>
         <div className="grid grid-flow-col gap-4">
           <a target={"_blank"} href="https://www.linkedin.com/in/md-abu-saiem-aziz-chowdhury-9b7217247/">

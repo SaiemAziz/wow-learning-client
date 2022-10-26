@@ -10,7 +10,11 @@ const AccordionList = ({cat, subjects}) => {
         subjectList = subjects
     return (
         <div className="collapse">
+            {
+                cat === 'All' ?
+                <input type="checkbox" defaultChecked/> : 
                 <input type="checkbox" /> 
+            }
                 <div className="collapse-title text-xl font-medium">
                     <Link className='text-2xl mt-2 hover:underline w-fit mx-auto'>{cat} Subjects <BiChevronDown className='inline'/></Link>
                 </div>
@@ -18,7 +22,7 @@ const AccordionList = ({cat, subjects}) => {
                     {
                         subjectList.map((s, idx)=>{
                             return <Link to={`/courses/subject/${s._id}`}
-                            className='py-0 btn btn-outline btn-info'
+                            className='py-0 btn btn-sm btn-outline btn-info'
                             key = {s._id}
                             >{idx+1}. {s.name}</Link>
                         })

@@ -10,16 +10,18 @@ const Category = () => {
             <p className='mt-10 text-5xl font-bold italic'>All Subjects</p>
             <br />
             <p className='mb-10 text-5xl font-bold italic'>Total: <span className='text-success'>{subjects.length}</span></p>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5 p-5 w-full '>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-5 p-5 w-full'>
                 {
                     subjects.map(sub=>{
-                        return <div className='card glass p-5 shadow-xl lg:min-h-[500px]' key={sub._id}
+                        return <div className='card glass p-5 shadow-xl flex flex-col justify-between' key={sub._id}
                         >
-                            <img className='rounded-xl mb-3' src={sub.pic} alt="" />
-                            <p className='text-xl italic'>Category: <span
-                            className='text-accent font-medium'
-                            >{sub.category}</span></p>
-                            <p className='text-3xl mt-3'><span className='text-info font-bold'>{sub.name}</span></p>
+                            <div>
+                                <img className='rounded-xl mb-3 w-full mx-auto' src={sub.pic} alt="" />
+                                <p className='text-xl italic'>Category: <span
+                                className='text-accent font-medium'
+                                >{sub.category}</span></p>
+                                <p className='text-2xl mt-3'><span className='text-info font-bold'>{sub.name}</span></p>
+                            </div>
                             <Link to={`/courses/subject/${sub._id}`} className='btn btn-outline btn-success mt-5'>Details</Link>
                         </div>
                     })

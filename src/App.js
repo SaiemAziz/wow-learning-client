@@ -15,12 +15,15 @@ function App() {
   return (
     <ThemeContext.Provider value={{ thm, setThm }}>
       <div className="App" data-theme={thm ? "coffee" : "autumn"}>
-        <div className="flex flex-col justify-between max-w-6xl mx-auto md:min-h-screen">
-          
+
+         {/* main site  */}
+        <div className="flex flex-col justify-between max-w-6xl mx-auto min-h-screen">
             <Header />
             <Outlet />
             <Footer />
         </div>
+
+        {/* toast  */}
             <ToastContainer  
             position="bottom-center"
             autoClose={5000}

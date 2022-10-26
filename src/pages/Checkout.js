@@ -6,7 +6,7 @@ const Checkout = () => {
     let subject = useLoaderData()
     let {user} = useContext(AuthContext)
     return (
-        <div className='card glass p-5 shadow-xl'>
+        <div className='card glass p-5 m-5 shadow-xl'>
             <h1 className='text-4xl font-bold text-success'>!!! WOW !!!</h1>
             <h1 className='text-2xl italic font-bold'>{user.displayName}</h1>
             <img className='mx-auto rounded-full my-4' src={user.photoURL} alt="" />

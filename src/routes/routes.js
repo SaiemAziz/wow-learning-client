@@ -44,11 +44,11 @@ export const routes = createBrowserRouter([
                         loader: ()=> fetch('https://wow-learning-server-saiemaziz.vercel.app/courses'),
                         element: <Category/>
                     },
-                    {
-                        path: '/courses/all',
-                        loader: ()=> fetch('https://wow-learning-server-saiemaziz.vercel.app/courses'),
-                        element: <Category/>
-                    },
+                    // {
+                    //     path: '/courses/all',
+                    //     loader: ()=> fetch('https://wow-learning-server-saiemaziz.vercel.app/courses'),
+                    //     element: <Category/>
+                    // },
                     {
                         path: '/courses/subject/:id',
                         loader: ({params})=> fetch(`https://wow-learning-server-saiemaziz.vercel.app/courses/subject/${params.id}`),
