@@ -8,7 +8,7 @@ import { BiErrorCircle } from 'react-icons/bi';
 
 const Register = () => {
     let {thm} = useContext(ThemeContext)
-    let {setUser, createUser , redirect, updateUser} = useContext(AuthContext)
+    let {setUser, createUser , redirect, updateUser, setLoading} = useContext(AuthContext)
     let [show, setShow] = useState(false)
     let [er, setEr] = useState('')
     let from = redirect || '/';
@@ -49,6 +49,7 @@ const Register = () => {
             .catch(err => {
                 setEr(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
             })
+        setLoading(false);
         e.target.reset();
     }
 

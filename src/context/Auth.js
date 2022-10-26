@@ -73,6 +73,7 @@ const Auth = ({children}) => {
     let authInfo = {
         createUser,
         loading,
+        setLoading,
         logIn, 
         logOut, 
         user, 

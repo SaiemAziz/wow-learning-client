@@ -4,11 +4,11 @@ import { ThemeContext } from '../App';
 import { AuthContext } from '../context/Auth';
 import { toast } from 'react-toastify';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
-import { BiError, BiErrorAlt, BiErrorCircle } from 'react-icons/bi';
+import { BiErrorCircle } from 'react-icons/bi';
 
 const Login = () => {
     let {thm} = useContext(ThemeContext)
-    let {resetPassword, logIn, setUser, googleLogin, redirect, githubLogin} = useContext(AuthContext)
+    let {resetPassword, logIn, setUser, googleLogin, redirect, githubLogin, setLoading} = useContext(AuthContext)
     let [show, setShow] = useState(false)
     let [er, setEr] = useState('')
     let from = redirect || '/';
@@ -30,10 +30,11 @@ const Login = () => {
             .catch((err)=>{
                 setEr(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
             })
+        setLoading(false)
         setEr('')
         e.target.reset()
     }
-
+    
     // log in by google
     let clickedGoogle = () => {
         googleLogin()
@@ -45,19 +46,21 @@ const Login = () => {
         .catch((err)=>{
             toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
         })
+        setLoading(false);
     }
-
-    // log in by google
+    
+    // log in by github
     let clickedGithub = () => {
         githubLogin()
-            .then((res)=>{
-                setUser(res.user)
-                toast.success('Successfully logged in')
-                navigate(from, {replace: true})
-                })
-                .catch((err)=>{
-                    toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
-                })
+        .then((res)=>{
+            setUser(res.user)
+            toast.success('Successfully logged in')
+            navigate(from, {replace: true})
+        })
+        .catch((err)=>{
+            toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+        })
+        setLoading(false);        
     }
 
     //send password verification email
@@ -71,6 +74,7 @@ const Login = () => {
             .catch((err)=>{
                 toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
             })
+        setLoading(false);
         userEmail.value ='';
     }
 

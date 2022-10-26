@@ -9,7 +9,7 @@ import {CgProfile} from 'react-icons/cg'
 
 
 const Header = () => {
-  let { user, setUser, logOut } = useContext(AuthContext);
+  let { user, setUser, logOut, setLoading } = useContext(AuthContext);
   let { thm, setThm } = useContext(ThemeContext);
 
   // log out user
@@ -23,6 +23,7 @@ const Header = () => {
         setUser(null)
         toast.success('Successfully Logged out')
       })
+      setLoading(false);
   }
 
   return (
