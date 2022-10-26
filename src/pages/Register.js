@@ -3,12 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../App';
 import { AuthContext } from '../context/Auth';
 import {toast} from 'react-toastify'
+import { BiErrorCircle } from 'react-icons/bi';
 
 
 const Register = () => {
     let {thm} = useContext(ThemeContext)
     let {setUser, createUser , redirect, updateUser} = useContext(AuthContext)
     let [show, setShow] = useState(false)
+    let [er, setEr] = useState('')
     let from = redirect || '/';
     let navigate = useNavigate()
 
@@ -27,7 +29,7 @@ const Register = () => {
         }
         if(userPassword !== userConfirm)
         {
-            toast.error('Password is not same')
+            setEr('Password is not same')
             e.target.reset();
             return;
         }
@@ -39,12 +41,13 @@ const Register = () => {
                     u.displayName = userName;
                     return u;
                 })
+                setEr('')
                 updateUser(userInfo)
                 toast.success('Successfully Registered and Logged in')
                 navigate(from, {replace: true})
             })
             .catch(err => {
-                toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+                setEr(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
             })
         e.target.reset();
     }
@@ -82,7 +85,11 @@ const Register = () => {
                 <div className='sm:col-span-2 flex justify-end'>
                 <h1 className='text-warning'>Show Password <><input type="checkbox" onClick={()=>setShow(!show)} className="checkbox-sm checkbox outline ml-5" /></></h1>
                 </div>
-
+                { er &&
+                    <div className='sm:col-span-2'>
+                        <p className='text-error flex items-center'><BiErrorCircle className='mr-2 text-xl'/>  {er}</p>
+                    </div>
+                }
                 <div className='sm:col-span-2 flex justify-between'>
                     <button type='submit' className='btn btn-success'>Register</button>
                     <Link to='/login' className='btn btn-outline btn-info'>Already Have Account?</Link>

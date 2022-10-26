@@ -81,7 +81,7 @@ const Header = () => {
                 <img className="w-[40px] h-[40px] rounded-full mx-5" src={user.photoURL} alt="" /> 
               </div> :
               <div className="tooltip tooltip-info tooltip-bottom" data-tip={user.displayName}>
-                <CgProfile/>
+                <CgProfile className="w-[40px] h-[40px] rounded-full mx-5"/>
               </div>
             }
             <Link to="/login" onClick={clickedLogout} className="btn btn-error">

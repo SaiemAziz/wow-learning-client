@@ -4,11 +4,13 @@ import { ThemeContext } from '../App';
 import { AuthContext } from '../context/Auth';
 import { toast } from 'react-toastify';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
+import { BiError, BiErrorAlt, BiErrorCircle } from 'react-icons/bi';
 
 const Login = () => {
     let {thm} = useContext(ThemeContext)
     let {resetPassword, logIn, setUser, googleLogin, redirect, githubLogin} = useContext(AuthContext)
     let [show, setShow] = useState(false)
+    let [er, setEr] = useState('')
     let from = redirect || '/';
     let navigate = useNavigate()
     
@@ -21,12 +23,14 @@ const Login = () => {
         logIn(userEmail, userPassword)
             .then((res)=>{
                 setUser(res.user)
+                setEr('')
                 toast.success('Successfully Logged in')
                 navigate(from, {replace: true})
             })
             .catch((err)=>{
-                toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+                setEr(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
             })
+        setEr('')
         e.target.reset()
     }
 
@@ -93,6 +97,11 @@ const Login = () => {
                 <div className='sm:col-span-2 flex justify-end'>
                 <h1 className='text-warning'>Show Password <><input type="checkbox" onClick={()=>setShow(!show)} className="checkbox-sm checkbox outline ml-5" /></></h1>
                 </div>
+                { er &&
+                    <div className='sm:col-span-2'>
+                        <p className='text-error flex items-center'><BiErrorCircle className='mr-2 text-xl'/>  {er}</p>
+                    </div>
+                }
 
                 <div className='sm:col-span-2 flex justify-between'>
                     <button type='submit' className='btn btn-success'>Log In</button>
