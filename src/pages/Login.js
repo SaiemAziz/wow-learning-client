@@ -22,7 +22,7 @@ const Login = () => {
             .then((res)=>{
                 setUser(res.user)
                 toast.success('Successfully Logged in')
-                navigate(redirect, {replace: true})
+                navigate(from, {replace: true})
             })
             .catch((err)=>{
                 toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
@@ -36,7 +36,7 @@ const Login = () => {
         .then((res)=>{
             setUser(res.user)
             toast.success('Successfully logged in')
-            navigate(redirect, {replace: true})
+            navigate(from, {replace: true})
         })
         .catch((err)=>{
             toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
@@ -49,11 +49,11 @@ const Login = () => {
             .then((res)=>{
                 setUser(res.user)
                 toast.success('Successfully logged in')
-                navigate(redirect, {replace: true})
-            })
-            .catch((err)=>{
-                toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
-            })
+                navigate(from, {replace: true})
+                })
+                .catch((err)=>{
+                    toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+                })
     }
 
     //send password verification email
@@ -61,12 +61,12 @@ const Login = () => {
         e.preventDefault();
         let userEmail = e.nativeEvent.path[2].email;
         resetPassword(userEmail.value)
-        .then(()=>{
-            toast.success('SENT A RESET PASSWORD EMAIL')
-        })
-        .catch((err)=>{
-            toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
-        })
+            .then(()=>{
+                toast.success('SENT A RESET PASSWORD EMAIL')
+            })
+            .catch((err)=>{
+                toast.error(err.code.replaceAll('auth/','').replaceAll('-',' ').toUpperCase())
+            })
         userEmail.value ='';
     }
 

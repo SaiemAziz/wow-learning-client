@@ -10,6 +10,7 @@ import Login from "../pages/Login";
 import Private from "../context/Private";
 import Checkout from "../pages/Checkout";
 import Register from "../pages/Register";
+import Blog from "../pages/Blog";
 
 export const routes = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register/>
+            },
+            {
+                path: '/blog',
+                element: <Blog/>
             },
             {
                 path: '/checkout/:id',
