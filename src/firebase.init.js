@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCC8vd9zTetYlOnqrt7FzvPLtTFLAv0FVc",
-  authDomain: "wow-learning.firebaseapp.com",
-  projectId: "wow-learning",
-  storageBucket: "wow-learning.appspot.com",
-  messagingSenderId: "374714090495",
-  appId: "1:374714090495:web:1f52479565324d3b0addca"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
