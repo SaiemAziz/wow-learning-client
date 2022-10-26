@@ -126,15 +126,15 @@ const Header = () => {
             className="m-3 mt-0 p-4 rounded-b-xl"
           >
             {thm ? (
-              <div className="flex justify-between items-center">
+              <span className="flex justify-between items-center">
                 <BsSun />
                 <input type="checkbox" className="toggle toggle-md toggle-primary" onClick={() => setThm(!thm)} data-theme='coffee'/>
-              </div>
+              </span>
             ) : (
-              <div className="flex justify-between items-center">
+              <span className="flex justify-between items-center">
                 <BsMoonFill />
                 <input type="checkbox" className="toggle toggle-md toggle-primary" onClick={() => setThm(!thm)} data-theme='autumn'/>
-              </div>
+              </span>
             )}
           </p>
         </ul>
