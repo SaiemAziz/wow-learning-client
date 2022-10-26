@@ -40,12 +40,12 @@ const Header = () => {
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal p-0">
           <NavLink className={({ isActive }) =>
-              isActive ? 'my-auto mx-5 text-success' : 'my-auto mx-5'
+              isActive ? 'my-auto mx-2 text-xl text-success' : 'my-auto mx-2 text-xl'
             } to="/courses">
             Subjects
           </NavLink>
           <NavLink className={({ isActive }) =>
-              isActive ? 'my-auto mx-5 text-success' : 'my-auto mx-5'
+              isActive ? 'my-auto mx-2 text-xl text-success' : 'my-auto mx-2 text-xl'
             } to="/blog">
             Blog
           </NavLink>
@@ -53,7 +53,7 @@ const Header = () => {
           <button
             
             data-theme={!thm ? "coffee" : "autumn"}
-            className="rounded-xl mx-5 p-4"
+            className="rounded-xl mx-2 text-xl p-4"
           >
             {thm ? (
               <div className="flex items-center">
