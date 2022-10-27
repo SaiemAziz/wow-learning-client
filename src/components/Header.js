@@ -25,7 +25,7 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-base-300 shadow-xl sticky top-0 px-4 py-4 z-50 font-bold">
+    <div className="navbar bg-base-300 shadow-xl sticky top-0 sm:px-4 px-1 py-4 z-50 font-bold">
 
       {/* web site logo and name  */}
       <div className="navbar-start">
