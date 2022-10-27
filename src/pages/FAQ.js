@@ -9,7 +9,10 @@ import {
 const FAQ = () => {
     return (
         <div className='flex justify-center items-center flex-col my-10'>
-         <h1 className='text-4xl text-info font-bold italic mb-5'>Frequently Asked Questions</h1>   
+         {/* title     */}
+         <h1 className='text-4xl text-info font-bold italic mb-5'>Frequently Asked Questions</h1>
+
+         {/* all questions     */}
          <div className="mx-auto max-w-4xl">
       {/* 1st question  */}
       <div className="collapse collapse-open">

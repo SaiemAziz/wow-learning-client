@@ -6,11 +6,14 @@ const Private = ({ children }) => {
   let { user, setRedirect, loading } = useContext(AuthContext);
   let location = useLocation();
   
+
+  // checking if user is true 
   if (user) {
     setRedirect(null)
     return children;
   }
   
+  // checking if the loading state true 
   else if (loading)
   return (
     <div className="flex items-center justify-center mt-10 ">
@@ -18,6 +21,7 @@ const Private = ({ children }) => {
     </div>
   ) 
   
+  // redirecting to log in page 
   else {    
     setRedirect(location.pathname);
     return <Navigate to="/login" replace></Navigate>;

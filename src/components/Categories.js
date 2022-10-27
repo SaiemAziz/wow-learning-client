@@ -9,6 +9,8 @@ const Categories = ({subjects}) => {
     
 
     return (
+
+        // left side bar accordions 
         <div className=' flex flex-col mt-5 text-left'>
             <AccordionList subjects={subjects} cat={'All'}/>
             <AccordionList subjects={subjects} cat={'Science'}/>

@@ -60,7 +60,7 @@ export const routes = createBrowserRouter([
                     //     element: <Category/>
                     // },
                     {
-                        path: '/courses/subject/:id',
+                        path: '/courses/details/:id',
                         loader: ({params})=> fetch(`https://wow-learning-server-saiemaziz.vercel.app/courses/subject/${params.id}`),
                         element: <SingleSubject/>
                     },

@@ -11,7 +11,10 @@ const Blog = () => {
   return (
 
     <div className='flex justify-center items-center flex-col my-10'>
+      {/* title  */}
       <h1 className='text-4xl text-info font-bold italic mb-5'>Blogs</h1>   
+
+      {/* all questions  */}
          <div className="mx-auto max-w-4xl"></div>
     <div className="mx-auto max-w-4xl">
       {/* 1st question  */}
@@ -36,8 +39,7 @@ const Blog = () => {
       <div className="collapse  card glass shadow-xl m-5">
         <input type="checkbox" />
         <div className="collapse-title text-left text-xl font-medium flex items-center w-full justify-between text-primary">
-          Why we use Firebase ?? Is there any other alternatives for
-          authentication?? <BiDownArrow className="ml-5" />
+        Why are you using firebase ?? What other options do you have to implement authentication ?? <BiDownArrow className="ml-5" />
         </div>
         <div className="collapse-content bg-base-300">
           <p className="text-justify pt-5 text-accent-content">
@@ -55,7 +57,7 @@ const Blog = () => {
       <div className="collapse  card glass shadow-xl m-5">
         <input type="checkbox" />
         <div className="collapse-title text-left text-xl font-medium flex items-center w-full justify-between text-primary">
-          How private route works ?? <BiDownArrow className="ml-5" />
+        How does the private route work ?? <BiDownArrow className="ml-5" />
         </div>
         <div className="collapse-content bg-base-300">
           <p className="text-justify pt-5 text-accent-content">
@@ -71,7 +73,7 @@ const Blog = () => {
       <div className="collapse  card glass shadow-xl m-5">
         <input type="checkbox" />
         <div className="collapse-title text-left text-xl font-medium flex items-center w-full justify-between text-primary">
-          What is Node js ?? How Node js works ?? <BiDownArrow className="ml-5" />
+          What is Node ?? How Node works ?? <BiDownArrow className="ml-5" />
         </div>
         <div className="collapse-content bg-base-300">
           <p className="text-justify pt-5 text-accent-content">

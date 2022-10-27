@@ -26,8 +26,9 @@ const Header = () => {
 
   return (
     <div className="navbar bg-base-300 shadow-xl sticky top-0 px-4 py-4 z-50 font-bold">
+
+      {/* web site logo and name  */}
       <div className="navbar-start">
-        {/* navbar log  */}
         <NavLink
           to="/"
           className="cursor-pointer flex flex-col sm:flex-row items-center normal-case font-extrabold  text-3xl italic bg-clip-text bg-gradient-to-r from-green-600 to-violet-600"
@@ -38,6 +39,8 @@ const Header = () => {
           <span className="text-transparent"> LEARNING</span>
         </NavLink>
       </div>
+
+      {/* essential nav links  */}
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal p-0">
           <NavLink
@@ -99,6 +102,8 @@ const Header = () => {
           </button>
         </ul>
       </div>
+
+      {/* log in log out user image  */}
       <div className="navbar-end">
         {!user ? (
           <Link to="/login" className="btn btn-outline btn-success">
@@ -213,8 +218,3 @@ const Header = () => {
 
 export default Header;
 
-{
-  /* <div className="tooltip tooltip-bottom" data-tip="hello">
-  <button className="btn">Hover me</button>
-</div> */
-}

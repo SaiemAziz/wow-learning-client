@@ -55,6 +55,7 @@ const Register = () => {
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+            {/* header  */}
             <div className='flex justify-center items-center my-10'>
                 <div>
                     <h1 className='text-6xl my-4'>  
@@ -63,6 +64,8 @@ const Register = () => {
                     <h1 className='text-7xl my-4 italic text-info font-medium'>Register</h1> 
                 </div>
             </div>
+
+            {/* Form  */}
             <form className={`text-gray-300 text-left p-10 grid gap-5 grid-cols-1 sm:grid-cols-2 ${thm ? "bg-stone-800" : "bg-info-content"}`} onSubmit={clickedForm}>
                 <h1 className='text-2xl'>Full Name</h1>
                 <input type="text" name="name"
