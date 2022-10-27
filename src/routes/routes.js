@@ -11,6 +11,7 @@ import Private from "../context/Private";
 import Checkout from "../pages/Checkout";
 import Register from "../pages/Register";
 import Blog from "../pages/Blog";
+import FAQ from "../pages/FAQ";
 
 export const routes = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog/>
+            },
+            {
+                path: '/faq',
+                element: <FAQ/>
             },
             {
                 path: '/checkout/:id',

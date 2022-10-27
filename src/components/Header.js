@@ -29,6 +29,7 @@ const Header = () => {
   return (
     <div className="navbar bg-base-300 shadow-xl sticky top-0 px-4 py-4 z-50 font-bold">
       <div className="navbar-start">
+        {/* navbar log  */}
         <NavLink
           to="/"
           className="cursor-pointer flex flex-col sm:flex-row items-center normal-case font-extrabold  text-3xl italic bg-clip-text bg-gradient-to-r from-green-600 to-violet-600"
@@ -43,6 +44,11 @@ const Header = () => {
               isActive ? 'my-auto mx-2 text-xl text-success' : 'my-auto mx-2 text-xl'
             } to="/courses">
             Subjects
+          </NavLink>
+          <NavLink className={({ isActive }) =>
+              isActive ? 'my-auto mx-2 text-xl text-success' : 'my-auto mx-2 text-xl'
+            } to="/faq">
+            FAQ
           </NavLink>
           <NavLink className={({ isActive }) =>
               isActive ? 'my-auto mx-2 text-xl text-success' : 'my-auto mx-2 text-xl'
