@@ -31,12 +31,12 @@ const Header = () => {
       <div className="navbar-start">
         <NavLink
           to="/"
-          className="cursor-pointer flex flex-col sm:flex-row items-center normal-case font-extrabold  text-3xl italic bg-clip-text bg-gradient-to-r from-green-600 to-violet-600"
+          className="cursor-pointer flex flex-row items-center normal-case font-extrabold  text-3xl italic bg-clip-text bg-gradient-to-r from-green-600 to-violet-600"
         >
           <span className="bg-gradient-to-r from-green-600 to-violet-600 p-3 rounded-xl not-italic text-base-300 mx-2">
-            WOW
+            WL
           </span>
-          <span className="text-transparent"> LEARNING</span>
+          <span className="text-left text-transparent text-xl">WOW <br /> LEARNING</span>
         </NavLink>
       </div>
 
