@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../context/Auth";
 import {CgProfile} from 'react-icons/cg'
+import {toast} from 'react-toastify'
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
@@ -16,8 +17,13 @@ import visa from "../images/Visa.jpg";
 const Checkout = () => {
   let subject = useLoaderData();
   let { user } = useContext(AuthContext);
+    let clickedPayNow = () => {
+        toast.success(`Enrolled in ${subject.name} successfully`)
+    }
+
+
   return (
-    <div className="grid md:grid-cols-2 gap-5 card glass p-5 m-5 shadow-xl">
+    <div className="grid md:grid-cols-2 gap-5 p-5 m-5">
 
       {/* profile info    */}
       <div>
@@ -27,7 +33,7 @@ const Checkout = () => {
         </h1>
         {
             user?.photoURL ?
-            <img className="mx-auto rounded-full w-1/5 md:w-2/3 my-4" alt="" src={user.photoURL} /> : 
+            <img className="mx-auto rounded-xl w-1/5 md:w-2/3 my-4" alt="" src={user.photoURL} /> : 
             <CgProfile className="mx-auto rounded-full w-2/3 my-4 text-7xl" />
         }
       </div>
@@ -37,7 +43,7 @@ const Checkout = () => {
       <div className=""> 
         <h1 className="md:text-lg text-xl font-medium">
           Welcome to learn <br />
-          <span className="text-primary italic my-2 text-3xl">
+          <span className="text-primary italic my-2 text-5xl">
             {subject.name}
           </span>
           <br />
@@ -46,8 +52,8 @@ const Checkout = () => {
         </h1>
 
         {/* carousel  */}
-        <div className="card p-5 border-2 border-blue-600 w-fit mx-auto my-5">
-          <h1 className="text-blue-600 text-left w-[250px] mx-auto mb-2">
+        <div className="card glass p-5 border-2 border-blue-600 w-fit mx-auto my-5">
+          <h1 className="text-blue-500 text-left w-[250px] mx-auto mb-2">
             Payment Methods
           </h1>
           <Swiper
@@ -55,7 +61,7 @@ const Checkout = () => {
             grabCursor={true}
             loop={true}
             centeredSlides={true}
-            slidesPerView={"1.5"}
+            slidesPerView={"1.7"}
             coverflowEffect={{
               rotate: 50,
               stretch: 0,
@@ -81,7 +87,7 @@ const Checkout = () => {
             <SwiperSlide>
               <img alt="" className="shadow-lg" src={rocket} />
             </SwiperSlide>
-            <button className="btn btn-outline mt-5 btn-info">Pay Now</button>
+            <Link to='/courses' onClick={clickedPayNow} className="btn btn-outline mt-5 btn-info">Pay Now</Link>
           </Swiper>
         </div>
       </div>
