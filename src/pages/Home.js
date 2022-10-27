@@ -14,7 +14,7 @@ const Home = () => {
             <div className='md:w-1/2 flex flex-col justify-center items-center m-10'> 
                 
                 <h1 className='text-4xl md:text-5xl'>Explore Our</h1>
-                <Link className='btn btn-info text-3xl md:text-5xl my-10 py-10 pb-20 md:pb-24 px-12 rounded-3xl btn-outline' to='/courses'>Subjects <AiFillCaretRight className='ml-4'/></Link>
+                <Link className='btn btn-info text-3xl md:text-5xl my-10 py-10 pb-20 md:pb-24 px-12 rounded-3xl btn-outline' to='/courses'>Subjects <AiFillCaretRight className='ml-4 text-3xl'/></Link>
                 <h1 className='text-4xl md:text-5xl'>Class 9-10</h1>
             </div>
         </div>

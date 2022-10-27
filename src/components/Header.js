@@ -3,10 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { BsSun, BsMoonFill } from "react-icons/bs";
 import { AuthContext } from "../context/Auth";
 import { ThemeContext } from "../App";
-import { toast } from 'react-toastify';
-import {CgProfile} from 'react-icons/cg'
- 
-
+import { toast } from "react-toastify";
+import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
   let { user, setUser, logOut, setLoading } = useContext(AuthContext);
@@ -14,17 +12,17 @@ const Header = () => {
 
   // log out user
   let clickedLogout = () => {
-      logOut()
-      .then(res => {
-        setUser(null)
-        toast.success('Successfully Logged out')
+    logOut()
+      .then((res) => {
+        setUser(null);
+        toast.success("Successfully Logged out");
       })
       .catch(() => {
-        setUser(null)
-        toast.success('Successfully Logged out')
-      })
-      setLoading(false);
-  }
+        setUser(null);
+        toast.success("Successfully Logged out");
+      });
+    setLoading(false);
+  };
 
   return (
     <div className="navbar bg-base-300 shadow-xl sticky top-0 px-4 py-4 z-50 font-bold">
@@ -34,68 +32,104 @@ const Header = () => {
           to="/"
           className="cursor-pointer flex flex-col sm:flex-row items-center normal-case font-extrabold  text-3xl italic bg-clip-text bg-gradient-to-r from-green-600 to-violet-600"
         >
-          <span className="bg-gradient-to-r from-green-600 to-violet-600 p-3 rounded-xl not-italic text-base-300 mx-2">WOW</span>
+          <span className="bg-gradient-to-r from-green-600 to-violet-600 p-3 rounded-xl not-italic text-base-300 mx-2">
+            WOW
+          </span>
           <span className="text-transparent"> LEARNING</span>
         </NavLink>
       </div>
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal p-0">
-          <NavLink className={({ isActive }) =>
-              isActive ? 'my-auto mx-2 text-xl text-success' : 'my-auto mx-2 text-xl'
-            } to="/courses">
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "my-auto mx-2 text-xl text-success"
+                : "my-auto mx-2 text-xl"
+            }
+            to="/courses"
+          >
             Subjects
           </NavLink>
-          <NavLink className={({ isActive }) =>
-              isActive ? 'my-auto mx-2 text-xl text-success' : 'my-auto mx-2 text-xl'
-            } to="/faq">
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "my-auto mx-2 text-xl text-success"
+                : "my-auto mx-2 text-xl"
+            }
+            to="/faq"
+          >
             FAQ
           </NavLink>
-          <NavLink className={({ isActive }) =>
-              isActive ? 'my-auto mx-2 text-xl text-success' : 'my-auto mx-2 text-xl'
-            } to="/blog">
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "my-auto mx-2 text-xl text-success"
+                : "my-auto mx-2 text-xl"
+            }
+            to="/blog"
+          >
             Blog
           </NavLink>
 
           <button
-            
             data-theme={!thm ? "coffee" : "autumn"}
             className="rounded-xl mx-2 text-xl p-4"
           >
             {thm ? (
               <div className="flex items-center">
                 <BsSun />
-                <input type="checkbox" className="toggle toggle-sm ml-2 toggle-primary" onClick={() => setThm(!thm)} data-theme='coffee'/>
+                <input
+                  type="checkbox"
+                  className="toggle toggle-sm ml-2 toggle-primary"
+                  onClick={() => setThm(!thm)}
+                  data-theme="coffee"
+                />
               </div>
             ) : (
               <div className="flex items-center">
                 <BsMoonFill />
-                <input type="checkbox" className="ml-2 toggle toggle-sm toggle-primary" onClick={() => setThm(!thm)} data-theme='autumn'/>
+                <input
+                  type="checkbox"
+                  className="ml-2 toggle toggle-sm toggle-primary"
+                  onClick={() => setThm(!thm)}
+                  data-theme="autumn"
+                />
               </div>
             )}
           </button>
         </ul>
       </div>
       <div className="navbar-end">
-        {!user ? 
+        {!user ? (
           <Link to="/login" className="btn btn-outline btn-success">
             Log In
           </Link>
-           : 
+        ) : (
           <div className="flex items-center">
-            {
-              user?.photoURL ? 
-              <div className="tooltip tooltip-info tooltip-bottom" data-tip={user.displayName || 'No Name'}>
-                <img className="w-[40px] h-[40px] rounded-full mx-5" src={user.photoURL} alt="" /> 
-              </div> :
-              <div className="tooltip tooltip-info tooltip-bottom" data-tip={user.displayName}>
-                <CgProfile className="w-[40px] h-[40px] rounded-full mx-5"/>
+            {user?.photoURL ? (
+              <div
+                className="tooltip tooltip-info tooltip-bottom"
+                data-tip={user.displayName || "No Name"}
+              >
+                <img
+                  className="w-[40px] h-[40px] rounded-full mx-5"
+                  src={user.photoURL}
+                  alt=""
+                />
               </div>
-            }
+            ) : (
+              <div
+                className="tooltip tooltip-info tooltip-bottom"
+                data-tip={user.displayName}
+              >
+                <CgProfile className="w-[40px] h-[40px] rounded-full mx-5" />
+              </div>
+            )}
             <Link to="/login" onClick={clickedLogout} className="btn btn-error">
-            Log Out
+              Log Out
             </Link>
           </div>
-        }
+        )}
       </div>
 
       {/* drop down menu */}
@@ -120,13 +154,31 @@ const Header = () => {
           tabIndex={0}
           className="menu menu-compact dropdown-content mt-6 p-0 shadow bg-base-300 rounded-box w-52 z-50 text-left"
         >
-            <NavLink className={({ isActive }) =>
-              isActive ? 'my-2 mx-5 text-success' : 'my-2 mx-5'
-            } to='/courses'>Subjects</NavLink>
-            <NavLink className={({ isActive }) =>
-              isActive ? 'mb-2 mx-5 text-success' : 'mb-2 mx-5'
-            } to='/blog'>Blog</NavLink>
-          
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "my-2 mx-5 text-success" : "my-2 mx-5"
+            }
+            to="/courses"
+          >
+            Subjects
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "mb-2 mx-5 text-success" : "mb-2 mx-5"
+            }
+            to="/faq"
+          >
+            FAQ
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "mb-2 mx-5 text-success" : "mb-2 mx-5"
+            }
+            to="/blog"
+          >
+            Blog
+          </NavLink>
+
           <p
             data-theme={!thm ? "coffee" : "autumn"}
             className="m-3 mt-0 p-4 rounded-b-xl"
@@ -134,12 +186,22 @@ const Header = () => {
             {thm ? (
               <span className="flex justify-between items-center">
                 <BsSun />
-                <input type="checkbox" className="toggle toggle-md toggle-primary" onClick={() => setThm(!thm)} data-theme='coffee'/>
+                <input
+                  type="checkbox"
+                  className="toggle toggle-md toggle-primary"
+                  onClick={() => setThm(!thm)}
+                  data-theme="coffee"
+                />
               </span>
             ) : (
               <span className="flex justify-between items-center">
                 <BsMoonFill />
-                <input type="checkbox" className="toggle toggle-md toggle-primary" onClick={() => setThm(!thm)} data-theme='autumn'/>
+                <input
+                  type="checkbox"
+                  className="toggle toggle-md toggle-primary"
+                  onClick={() => setThm(!thm)}
+                  data-theme="autumn"
+                />
               </span>
             )}
           </p>

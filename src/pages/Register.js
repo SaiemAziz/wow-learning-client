@@ -66,21 +66,21 @@ const Register = () => {
             <form className={`text-gray-300 text-left p-10 grid gap-5 grid-cols-1 sm:grid-cols-2 ${thm ? "bg-stone-800" : "bg-info-content"}`} onSubmit={clickedForm}>
                 <h1 className='text-2xl'>Full Name</h1>
                 <input type="text" name="name"
-                className='input input-bordered input-primary text-primary' required/>
+                className='input input-bordered input-primary text-primary' placeholder='Enter Full Name' required/>
                 <h1 className='text-2xl'>Image Link</h1>
                 <input type="text" name="image"
-                className='input input-bordered input-primary text-primary' />
+                className='input input-bordered input-primary text-primary' placeholder='Enter Image URL' />
                 <h1 className='text-2xl'>Email</h1>
                 <input type="email" name="email"
-                className='input input-bordered input-primary text-primary' required />
+                className='input input-bordered input-primary text-primary' placeholder='Enter Your Email' required />
 
                 <h1 className='text-2xl'>Password</h1>
                 <input type={show ? 'text' :"password"} name="password"
-                className='input input-bordered input-primary text-primary' required />
+                className='input input-bordered input-primary text-primary' placeholder='Enter Password' required />
 
                 <h1 className='text-2xl'>Confirm Password</h1>
                 <input type={show ? 'text' :"password"} name="confirm"
-                className='input input-bordered input-primary text-primary' required />
+                className='input input-bordered input-primary text-primary' placeholder='Re-Enter Password' required />
                 
 
                 <div className='sm:col-span-2 flex justify-end'>

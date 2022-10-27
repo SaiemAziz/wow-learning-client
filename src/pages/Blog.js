@@ -9,6 +9,10 @@ import { BsMenuDown } from "react-icons/bs";
 
 const Blog = () => {
   return (
+
+    <div className='flex justify-center items-center flex-col my-10'>
+      <h1 className='text-4xl text-info font-bold italic mb-5'>Blogs</h1>   
+         <div className="mx-auto max-w-4xl"></div>
     <div className="mx-auto max-w-4xl">
       {/* 1st question  */}
       <div className="collapse  card glass shadow-xl m-5">
@@ -82,6 +86,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 };
